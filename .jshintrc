@@ -3,7 +3,7 @@
   "browser": true,
   "esnext": true,
   "bitwise": true,
-  "camelcase": false,
+  "camelcase": true,
   "curly": true,
   "eqeqeq": true,
   "immed": true,
@@ -24,8 +24,6 @@
   "smarttabs": true,
   "loopfunc": true,
   "globals": {
-    "angular": false,
-    "$": false,
-    "jQuery": false
+    "angular": false
   }
 }

@@ -1,10 +1,8 @@
 /*
- * HTML5 Sortable library
- * https://github.com/voidberg/html5sortable
+ * Sortable Elements
+ * https://github.com/lukasoppermann/sortable-elements
  *
- * Original code copyright 2012 Ali Farhadi.
- * This version is mantained by Alexandru Badiu <andu@ctrlz.ro> & Lukas Oppermann <lukas@vea.re>
- * jQuery-independent implementation by Nazar Mokrynskyi <nazar@mokrynskyi.com>
+ * This version is mantained by Lukas Oppermann <lukas@vea.re>
  *
  * Released under the MIT license.
  */
