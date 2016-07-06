@@ -1,6 +1,6 @@
 {
   "name": "sortable-elements",
-  "main": "dist/html.sortable.js",
+  "main": "dist/sortable-elements.js",
   "version": "0.1.0",
   "license": "MIT",
   "description": "Sortable in dev",

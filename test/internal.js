@@ -4,7 +4,7 @@ describe('Internal function tests', function(){
   GLOBAL.document = require('jsdom').jsdom('<html lang="en-US"></html>');
   GLOBAL.window = GLOBAL.document.defaultView;
   GLOBAL.$ = GLOBAL.jQuery = require('../node_modules/jquery/dist/jquery.js');
-  var sortable = require("../src/html.sortable.src.js");
+  var sortable = require("../src/sortable-elements.src.js");
   var $ul;
   var ul;
   var $li;

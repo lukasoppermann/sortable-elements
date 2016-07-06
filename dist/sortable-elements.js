@@ -1,3 +1,12 @@
+;(function(root, factory) {
+  if (typeof define === 'function' && define.amd) {
+    define([], factory);
+  } else if (typeof exports === 'object') {
+    module.exports = factory();
+  } else {
+    root.sortable = factory();
+  }
+}(this, function() {
 /*
  * Sortable Elements
  * https://github.com/lukasoppermann/sortable-elements
@@ -672,21 +681,5 @@ sortable.disable = function(sortableElement) {
   _disableSortable(sortableElement);
 };
 
-/* start-testing */
-sortable.__testing = {
-  // add internal methods here for testing purposes
-  _data: _data,
-  _removeSortableEvents: _removeSortableEvents,
-  _removeItemEvents: _removeItemEvents,
-  _removeItemData: _removeItemData,
-  _removeSortableData: _removeSortableData,
-  _listsConnected: _listsConnected,
-  _attachGhost: _attachGhost,
-  _addGhostPos: _addGhostPos,
-  _getGhost: _getGhost,
-  _makeGhost: _makeGhost,
-  _index: _index,
-  _makeEvent: _makeEvent
-};
-module.exports = sortable;
-/* end-testing */
+return sortable;
+}));
