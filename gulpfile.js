@@ -1,8 +1,5 @@
 'use strict';
 /* ---------- */
-/* variables */
-var srcFile = 'html.sortable.src.js';
-/* ---------- */
 /* setup */
 var gulp = require('gulp');
 var rename = require('gulp-rename');
@@ -16,13 +13,12 @@ var jshint = require('gulp-jshint');
 var jscs = require('gulp-jscs');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
-var umd = require('gulp-umd');
 var strip = require('gulp-strip-code');
 /* ---------- */
 /* linting */
 gulp.task('lint', function() {
   gulp.src([
-    'src/' + srcFile
+    'src/sortable-elements.src.js'
   ])
     .pipe(jscs())
     .pipe(jshint())
@@ -31,33 +27,19 @@ gulp.task('lint', function() {
     ;
 });
 /* ---------- */
-/* convert to umd */
-gulp.task('umd', function() {
-  return gulp.src('src/' + srcFile)
-    .pipe(strip({
-      //jscs:disable
-      start_comment: 'start-testing',
-      end_comment: 'end-testing'
-      //jscs:enable
-    }))
-    .pipe(umd({
-      exports: function() {
-        return 'sortable';
-      },
-      namespace: function() {
-        return 'sortable';
-      }
-    }))
-    .pipe(rename('html.sortable.js'))
-    .pipe(gulp.dest('src/'));
-});
-/* ---------- */
 /* build */
-gulp.task('build-version', ['umd'], function() {
+gulp.task('build-version', function() {
   // clear dist
   del.sync('./dist/*', {force: true});
   // copy files to dist
-  gulp.src(['src/html.sortable.js'])
+  gulp.src(['src/sortable-elements.src.js'])
+    .pipe(strip({
+        //jscs:disable
+        start_comment: 'start-testing',
+        end_comment: 'end-testing'
+        //jscs:enable
+    }))
+    .pipe(rename('sortable-elements.js'))
     .pipe(gulp.dest('./dist'))
     .pipe(sourcemaps.init({loadMaps: true}))
     .pipe(uglify())
@@ -69,7 +51,7 @@ gulp.task('build-version', ['umd'], function() {
     .pipe(gulp.dest('./dist'))
     // remove umd
     .on('end', function() {
-      del.sync('./src/html.sortable.js', {force: true});
+      del.sync('./src/sortable-elements.js', {force: true});
     });
 
 });
@@ -123,5 +105,5 @@ gulp.task('publish-version', ['tag-version'], function() {
 /* ---------- */
 /* tasks */
 gulp.task('test', ['lint']);
-gulp.task('build', ['umd', 'build-version', 'test']);
+gulp.task('build', ['build-version', 'test']);
 gulp.task('publish', ['bump-version', 'add-files', 'tag-version', 'publish-version']);
