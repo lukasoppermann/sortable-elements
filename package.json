@@ -1,0 +1,59 @@
+{
+  "name": "sortable-elements",
+  "main": "dist/html.sortable.js",
+  "version": "0.1.0",
+  "license": "MIT",
+  "description": "Sortable in dev",
+  "author": {
+      "name": "Lukas Oppermann",
+      "email": "lukas@vea.re",
+      "url": "http://vea.re"
+  },
+  "keywords": [
+    "sortable",
+    "html5",
+    "drag and drop"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lukasoppermann/sortable-elements"
+  },
+  "bugs": {
+    "url": "https://github.com/lukasoppermann/sortable-elements/issues",
+    "email": "andu@ctrlz.ro"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "coveralls": "^2.11.2",
+    "del": "2.x.x",
+    "gulp": "^3.8.11",
+    "gulp-bump": "1.x.x",
+    "gulp-jscs": "3.x.x",
+    "jshint": "2.x.x",
+    "gulp-jshint": "2.x.x",
+    "gulp-prompt": "^0.1.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-shell": "0.5.x",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-strip-code": "^0.1.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-umd": "^0.2.0",
+    "gulp-util": "^3.0.4",
+    "istanbul": "0.4.x",
+    "jquery": "^2.1.4",
+    "jsdom": "^9.2.1",
+    "jshint-stylish": "2.x.x",
+    "minimist": "^1.1.1",
+    "mocha": "^2.2.4",
+    "mocha-istanbul": "^0.2.0",
+    "requirejs": "^2.1.17",
+    "semver": "5.x.x"
+  },
+  "scripts": {
+    "test": "npm run test-plugin && gulp test",
+    "travis": "npm run cover && ./node_modules/.bin/mocha test/umd/module.js && gulp test",
+    "test-plugin": "./node_modules/.bin/mocha test/umd/module.js && ./node_modules/.bin/mocha test/*.js",
+    "cover": "./node_modules/.bin/istanbul cover ./node_modules/mocha/bin/_mocha test/*.js --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "build": "gulp build"
+  }
+}
