@@ -697,7 +697,6 @@ sortable.__testing = {
   _index: _index,
   _makeEvent: _makeEvent
 };
-module.exports = sortable;
 /* end-testing */
 return sortable;
 }));

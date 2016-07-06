@@ -1,5 +1,5 @@
 // testing the UMD (module loading capabilities)
-describe('Testing UMD (Universal Module Definition) against /dist/sortable-elements.js', function(){
+describe('Testing UMD (Universal Module Definition) against /src/sortable-elements.src.js', function(){
 
 var assert = require("chai").assert;
 var path = require("path");
@@ -11,7 +11,7 @@ var path = require("path");
       require('jsdom').env({
         html: '<html><body></body></html>',
         scripts: [
-          path.resolve(__dirname, '../../dist/sortable-elements.js')
+          path.resolve(__dirname, '../../src/sortable-elements.src.js')
         ],
         done: function (errors, window) {
           test.sortable = window.sortable;
@@ -34,8 +34,10 @@ var path = require("path");
     });
 
     it('should be able to require sortable-elements', function() {
-      var sortable = require('../../dist/sortable-elements.js');
+      var sortable = require('../../src/sortable-elements.src.js');
       assert.typeOf(sortable,"function");
+      assert.typeOf(GLOBAL.sortable,"undefined");
+      assert.typeOf(GLOBAL.window.sortable,"undefined");
     });
 
   });
@@ -64,6 +66,7 @@ var path = require("path");
 
     it("should define sortable", function () {
       assert.typeOf(test.sortable,"function");
+      assert.typeOf(GLOBAL.sortable,"undefined");
     });
 
   });
