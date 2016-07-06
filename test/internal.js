@@ -28,7 +28,9 @@ describe('Internal function tests', function(){
     // need to add on click so that event object is not removed
     // when all sortable events are removed
     sortable(ul);
-    $ul.on('click', 'console.log');
+    $ul.on('click', function(){
+        return 'test';
+    });
     sortable.__testing._removeSortableEvents(ul);
     assert.isFalse(((ul.h5s || {}).events || {}).hasOwnProperty('dragover'));
     assert.isFalse(((ul.h5s || {}).events || {}).hasOwnProperty('dragenter'));
@@ -43,7 +45,9 @@ describe('Internal function tests', function(){
     // need to add on click so that event object is not removed
     // when all sortable events are removed
     sortable(ul);
-    $li.on('click', 'console.log');
+    $li.on('click', function(){
+        return 'test';
+    });
     sortable.__testing._removeItemEvents(li);
     // test individual events
     assert.isFalse((li.h5s.events || {}).hasOwnProperty('dragover'));
