@@ -518,6 +518,7 @@ var sortable = function(sortableElements, options) {
       _on(items, 'mouseenter', function() {
         this.classList.add(hoverClass);
       });
+
       _on(items, 'mouseleave', function() {
         this.classList.remove(hoverClass);
       });
@@ -573,6 +574,7 @@ var sortable = function(sortableElements, options) {
         startparent: startParent
       }));
       if (index !== _index(dragging) || startParent !== newParent) {
+        var startParentItems = _filter(startParent.children, _data(startParent, 'items'));
         _dispatchEventOnConnected(sortableElement, _makeEvent('sortupdate', {
           draggedItem: {
               item: dragging,
@@ -588,11 +590,11 @@ var sortable = function(sortableElements, options) {
           },
           startParent: {
               item: startParent,
-              items: Array.prototype.map.call(startParent.children, function(item){
+              items: Array.prototype.map.call(startParentItems, function(item){
                   return {
                       item: item,
                       oldIndex: items.indexOf(item),
-                      index: Array.prototype.indexOf.call(startParent.children,item),
+                      index: Array.prototype.indexOf.call(startParentItems,item),
                       get hasChanged(){
                           return this.oldIndex !== this.index;
                       },
