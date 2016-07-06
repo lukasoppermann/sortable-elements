@@ -16,7 +16,7 @@
     "regexp": true,
     "maxdepth": 3,
     "maxparams": 3,
-    "maxstatements": false,
+    "maxstatements": 9,
     "maxcomplexity": 10,
     "undef": true,
     "unused": true,

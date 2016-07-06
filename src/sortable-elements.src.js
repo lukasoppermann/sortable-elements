@@ -6,7 +6,7 @@
   } else {
     root.sortable = factory();
   }
-}(this, function() {
+}(this, function() { // jshint ignore:line
 /*
  * Sortable Elements
  * https://github.com/lukasoppermann/sortable-elements
