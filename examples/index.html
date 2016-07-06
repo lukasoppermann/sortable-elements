@@ -262,6 +262,7 @@
 				placeholderClass: 'border border-white bg-orange mb1'
 			});
 			$('.js-sortable-connected').on('sortupdate', function(e){
+				console.log(e.originalEvent.detail);
 				console.log('Parent old: ');
 				console.log(e.originalEvent.detail.startparent);
 				console.log('Parent new: ');

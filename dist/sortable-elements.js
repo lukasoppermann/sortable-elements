@@ -574,19 +574,51 @@ var sortable = function(sortableElements, options) {
       }));
       if (index !== _index(dragging) || startParent !== newParent) {
         _dispatchEventOnConnected(sortableElement, _makeEvent('sortupdate', {
-          item: dragging,
-          index: _filter(newParent.children, _data(newParent, 'items'))
-            .indexOf(dragging),
-          oldindex: items.indexOf(dragging),
-          elementIndex: _index(dragging),
-          oldElementIndex: index,
-          startparent: startParent,
-          endparent: newParent
+          draggedItem: {
+              item: dragging,
+              index: _filter(newParent.children, _data(newParent, 'items'))
+                .indexOf(dragging),
+              oldIndex: items.indexOf(dragging),
+              get position(){
+                  return this.index + 1;
+              },
+              get oldPosition(){
+                  return this.oldIndex + 1;
+              },
+          },
+          startParent: {
+              item: startParent,
+              items: Array.prototype.map.call(startParent.children, function(item){
+                  return {
+                      item: item,
+                      oldIndex: items.indexOf(item),
+                      index: Array.prototype.indexOf.call(startParent.children,item),
+                      get hasChanged(){
+                          return this.oldIndex !== this.index;
+                      },
+                      get position(){
+                          return this.index + 1;
+                      },
+                  };
+              })
+          },
+          endParent: {
+              item: newParent,
+              items: Array.prototype.map.call(newParent.children, function(item){
+                  return {
+                      item: item,
+                      index: Array.prototype.indexOf.call(newParent.children,item),
+                      get position(){
+                          return this.index + 1;
+                      },
+                  };
+              })
+          }
         }));
       }
       dragging = null;
       draggingHeight = null;
-    });
+      });
     // Handle drop event on sortable & placeholder
     // TODO: REMOVE placeholder?????
     _on([sortableElement, placeholder], 'drop', function(e) {
