@@ -207,15 +207,6 @@ var _addGhostPos = function(event, ghost) {
   return ghost;
 };
 /**
- * _makeGhost decides which way to make a ghost and passes it to attachGhost
- * @param {Element} draggedItem - the item that the user drags
- */
-var _makeGhost = function(draggedItem) {
-  return {
-    draggedItem: draggedItem
-  };
-};
-/**
  * _getGhost constructs ghost and attaches it to dataTransfer
  * @param {Event} event - the original drag event object
  * @param {Element} draggedItem - the item that the user drags
@@ -223,7 +214,9 @@ var _makeGhost = function(draggedItem) {
 // TODO: could draggedItem be replaced by event.target in all instances
 var _getGhost = function(event, draggedItem) {
   // add ghost item & draggedItem to ghost object
-  var ghost = _makeGhost(draggedItem);
+  var ghost = {
+    draggedItem: draggedItem
+  };
   // attach ghost position
   ghost = _addGhostPos(event, ghost);
   // attach ghost to dataTransfer

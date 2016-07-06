@@ -48,11 +48,6 @@ describe('Testing ghost creation methods', function(){
     assert.equal(e.dataTransfer.y, 20);
   });
 
-  it('sets item correctly from dragged item (_makeGhost)', function(){
-    var ghost = sortable.__testing._makeGhost(dItem);
-    assert.equal(dItem.get(0).innerHTML, 'dItem Test');
-  });
-
   it('sets x & y correctly (_addGhostPos)', function(){
     var ghost = sortable.__testing._addGhostPos(e, {
       draggedItem: dItem.get(0)
