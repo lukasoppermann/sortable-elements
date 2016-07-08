@@ -622,6 +622,9 @@ var sortable = function(sortableElements, options) {
               })
           }
         }));
+        // update items check after the primary check for hasChanged are correct
+        // TODO: this needs to be changed to something better, e.g. items tracking their own old and new indicies
+        items = _filter(sortableElement.children, _data(sortableElement, 'items'));
       }
       dragging = null;
       draggingHeight = null;
