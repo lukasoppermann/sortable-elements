@@ -58,7 +58,18 @@
 						<li class="p1 mb1 navy bg-yellow" style="position: relative; z-index: 10">Item 3</li>
 						<li class="p1 mb1 navy bg-yellow" style="position: relative; z-index: 10">Item 4</li>
 						<li class="p1 mb1 navy bg-yellow" style="position: relative; z-index: 10">Item 5</li>
-						<li class="p1 mb1 navy bg-yellow" style="position: relative; z-index: 10">Item 6</li>
+						<li class="p1 mb1 navy bg-yellow" style="position: relative; z-index: 10">
+							<div class="mb1">Item 6</div>
+							<ul class="js-sortable-inner-connected list flex flex-column list-reset mb0">
+								<li class="p1 mb1 border border-orange orange bg-white">
+									<div class="mb1"><span class="js-inner-handle px1">||</span>Inner item 3</div>
+									<ul class="js-sortable-inner-connected list flex flex-column list-reset mb0">
+										<li class="p1 mb1 border border-orange orange bg-white"><span class="js-inner-handle px1">||</span>Inner item 4</li>
+									</ul>
+								</li>
+								<li class="p1 mb1 border border-orange orange bg-white"><span class="js-inner-handle px1">||</span>Inner item 4</li>
+							</ul>
+						</li>
 						<li class="mb1 bg-navy ghost border border-yellow" style="position: relative; z-index: 1; margin-top: -49px; height: 40px; display: block;">Ghost test</li>
 					</ul>
 		    </div>
@@ -174,12 +185,16 @@
 				<ul class="js-sortable-connected list flex flex-column list-reset">
 					<li class="p1 mb1 border border-orange orange bg-white"><span class="js-handle px1">||</span>Item 1</li>
 					<li class="p1 mb1 border border-orange orange bg-white"><span class="js-handle px1">||</span>Item 2</li>
-					<li class="p1 mb1 border border-orange orange bg-white"><span class="js-handle px1">||</span>Item 3</li>
+					<li class="p1 mb1 border border-orange orange bg-white">
+						<div class="mb1"><span class="js-handle px1">||</span>Item 3</div>
+					</li>
 					<li class="p1 mb1 border border-orange orange bg-white">
 						<div class="mb1"><span class="js-handle px1">||</span>Item 4</div>
 						<ul class="js-sortable-inner-connected list flex flex-column list-reset mb0">
 							<li class="p1 mb1 border border-blue white bg-blue"><span class="js-inner-handle px1">||</span>Inner item 3</li>
-							<li class="p1 mb1 border border-blue white bg-blue"><span class="js-inner-handle px1">||</span>Inner item 4</li>
+							<li class="p1 mb1 border border-blue white bg-blue">
+								<div class="mb1"><span class="js-inner-handle px1">||</span>Inner item 4</div>
+							</li>
 						</ul>
 					</li>
 				</ul>
@@ -230,7 +245,7 @@
 			sortable('.js-sortable', {
 				forcePlaceholderSize: true,
 				placeholderClass: 'p1 mb1 bg-navy border border-yellow',
-				dragImage: $('.ghost')[0]
+				dragImage: $('.ghost')[0],
 			});
 			sortable('.js-grid', {
 				forcePlaceholderSize: true,
