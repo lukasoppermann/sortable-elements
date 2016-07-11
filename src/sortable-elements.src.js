@@ -540,7 +540,11 @@ var sortable = function(sortableElements, options) {
 
     // Handle drag events on draggable items
     _on(items, 'dragstart', function(e) {
-      e.stopImmediatePropagation();
+        e.stopImmediatePropagation();
+        // cancel event if handle is defined but target is not handle
+        if(options.handle && !e.target[matches](options.handle)){
+            return;
+        }
 
       if (options.dragImage) {
         _attachGhost(e, {
@@ -665,6 +669,9 @@ var sortable = function(sortableElements, options) {
 
     // Handle dragover and dragenter events on draggable items
     var onDragOverEnter = function(e) {
+        if (!dragging) {
+          return;
+        }
       if (!_listsConnected(sortableElement, dragging.parentElement)) {
         return;
       }
