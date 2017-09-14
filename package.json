@@ -19,8 +19,7 @@
     "url": "https://github.com/lukasoppermann/sortable-elements"
   },
   "bugs": {
-    "url": "https://github.com/lukasoppermann/sortable-elements/issues",
-    "email": "andu@ctrlz.ro"
+    "url": "https://github.com/lukasoppermann/sortable-elements/issues"
   },
   "devDependencies": {
     "chai": "^3.0.0",
